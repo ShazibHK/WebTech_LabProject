@@ -34,7 +34,7 @@ class Dashboard extends React.Component {
             <img src="assets/hello.svg" alt="" />
             <div class="main__greeting">
               <h1>Hello Admin</h1>
-              <p>Welcome to your admin dashboard</p>
+              <p>Welcome to your dashboard</p>
             </div>
           </div>
 
@@ -133,7 +133,7 @@ class Dashboard extends React.Component {
       <div id="sidebar">
         <div class="sidebar__title">
           <div class="sidebar__img">
-            <h1>B2B MAKEBUZZ</h1>
+            <h1>B2B MakeBuzz</h1>
           </div>
           <i
             onclick="closeSidebar()"

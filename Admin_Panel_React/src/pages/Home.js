@@ -34,7 +34,7 @@ class Home extends React.Component {
                   <img src="assets/hello.svg" alt="" />
                   <div className="main__greeting">
                     <h1>Hello Admin</h1>
-                    <p>Welcome to your admin dashboard</p>
+                    <p>Welcome to your dashboard</p>
                   </div>
                 </div>
   

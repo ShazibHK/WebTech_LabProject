@@ -170,8 +170,8 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 70px;
-  padding: 25px;
+  height: 80px;
+  padding: 20px;
   border-radius: 5px;
   background: #ffffff;
   box-shadow: 5px 5px 13px #ededed, -5px -5px 13px #ffffff;
@@ -315,7 +315,7 @@ main {
   background: #2F323A;
   grid-area: sidebar;
   overflow-y: auto;
-  width: 90%;
+  padding: 20px;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
@@ -325,7 +325,6 @@ main {
   justify-content: space-between;
   align-items: center;
   color: #3ea175;
-  padding: 20px;
   margin-bottom: 30px;
 }
 
