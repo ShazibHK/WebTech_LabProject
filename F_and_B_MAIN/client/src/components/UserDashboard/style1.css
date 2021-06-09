@@ -123,6 +123,8 @@ body{
     margin-left: 20px;
 } */
 
+
+
 label #sidebar_btn{
 
     z-index: 1;
@@ -230,6 +232,8 @@ label #sidebar_btn:hover{
         transition: 0s;
         width: calc(100% - 0px);
     }
+
+    
 
     #check:checked ~ .cont{
         margin-left: 0;

@@ -9,6 +9,7 @@ import Client from './components/Client/Client.jsx';
 import Testimonials from './components/Testimonials/Testimonials.jsx';
 import Footer from './components/Footer/Footer.jsx';
 import UserDashboard from './components/UserDashboard/UserDashboard';
+import AdminDashboard from './components/AdminDashboard/Dasboard.jsx';
 const App = () => (
   <BrowserRouter>
     
@@ -21,7 +22,7 @@ const App = () => (
         <Route exact path="/"  component={Footer} />
         <Route exact path="/auth" component={Auth} />
         <Route exact path="/UserDashboard" component={UserDashboard} />
-    
+        <Route exact path="/Admin"  component={AdminDashboard} />
   </BrowserRouter>
 );
 
