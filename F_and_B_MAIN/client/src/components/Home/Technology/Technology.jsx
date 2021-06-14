@@ -17,7 +17,7 @@ function Technology(){
                         </p>
                     </div>
                     <div className="imgBx">
-                        <img src={tech} alt="tech"/>
+                        <img width="30%" src={tech} alt="tech"/>
                     </div>
                 </section>
         );

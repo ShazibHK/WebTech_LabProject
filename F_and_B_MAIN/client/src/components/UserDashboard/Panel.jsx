@@ -1,21 +1,63 @@
-import React from 'react';
-
+import React, { useState, useEffect } from 'react';
+import { Link, useHistory, useLocation } from 'react-router-dom';
+import { useDispatch,useSelector } from 'react-redux';
+import decode from 'jwt-decode';
+import * as actionType from '../../constants/actionTypes';
 import './style1.css';
 import pro from './pro1.png';
-
+import { getUsers } from '../../actions/auth';
 function Panel() {
+
+    const [currentId, setCurrentId] = useState(0);
+    const dispatch = useDispatch();
+     
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+    const location = useLocation();
+    const history = useHistory();
+
+    useEffect(() => {
+      dispatch(getUsers());
+      setUser(JSON.parse(localStorage.getItem('profile')));
+    }, [currentId, dispatch]);
+  
+    const auth = useSelector((state) => state.auth);
+   console.log(user)
+   console.log(auth)
+    
+    const logout = () => {
+      dispatch({ type: actionType.LOGOUT });
+  
+      history.push('/');
+  
+      setUser(null);
+    };
+  
+    useEffect(() => {
+      const token = user?.token;
+  
+      if (token) {
+        const decodedToken = decode(token);
+  
+        if (decodedToken.exp * 1000 < new Date().getTime()) logout();
+      }
+  
+      setUser(JSON.parse(localStorage.getItem('profile')));
+    }, [location]);
     return (
+        
         <div>
             <div className="sidebar">
                 <div className="profile_info">
                     <img src={pro} className="profile_image" alt="profile pic" />
-                    <h4>Username</h4>
+                    <h4></h4>
                 </div>
                 <div>
-                    <a href="a"><i className="fas fa-desktop"></i><span>Dashboard</span></a>
-                    <a href="b"><i className="fas fa-cogs"></i><span>MyDeals</span></a>
-                    <a href="c"><i className="fas fa-table"></i><span>Fill Proposal Form</span></a>
-                    <a href="d"><i className="fas fa-th"></i><span>Add Products</span></a>
+                    <a href="UserDashboard"><i className="fas fa-desktop"></i><span>Dashboard</span></a>
+                    <a href="Deals"><i className="fas fa-cogs"></i><span>MyDeals</span></a>
+                    <a href="ProposalForm"><i className="fas fa-table"></i><span>Fill Proposal Form</span></a>
+                    {!user?.result?.dealAccept?
+                    <a style={{ opacity:'0.2'}}><i className="fas fa-th"></i><span>Cannot add product</span></a>:
+                    <a href="ProductAndForm"><i className="fas fa-th"></i><span>Add Products</span></a>}
                     <a href="e"><i className="fas fa-info-circle"></i><span>About</span></a>
                     <a href="f"><i className="fas fa-sliders-h"></i><span>Settings</span></a>
                 </div>

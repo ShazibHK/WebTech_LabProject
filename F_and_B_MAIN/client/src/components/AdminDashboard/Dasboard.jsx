@@ -1,11 +1,53 @@
-import React from "react";
-import HighlightIcon from "@material-ui/icons/Highlight";
-
+import React, { useState, useEffect } from 'react';
 import ag from './hello.svg';
 import as from './avatar.svg';
 import './styles.css';
-
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import Analytics from './Analytics';
+import { getNotification } from '../../actions/notifications';
+import { Link, useHistory, useLocation } from 'react-router-dom';
+import * as actionType from '../../constants/actionTypes';
+import decode from 'jwt-decode';
 function AdminDashboard() {
+  
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const history = useHistory();
+
+
+  useEffect(() => {
+    dispatch(getNotification());
+  }, [dispatch]);
+
+  useEffect(() => {
+    getNotification();
+  },[]);
+
+
+  useEffect(() => {
+    const token = user?.token;
+    if (token) {
+      const decodedToken = decode(token);
+      if (decodedToken.exp * 1000 < new Date().getTime()) logout();
+    }
+    setUser(JSON.parse(localStorage.getItem('profile')));
+  }, [location]);
+
+  
+  const notifications = useSelector((state) => state.notifications);
+  const deals = useSelector((state) => state.deals);
+  
+  const logout = () => {
+    dispatch({ type: actionType.LOGOUT });
+
+    history.push('/');
+
+    setUser(null);
+  };
+
+  console.log(deals)
   return (
     <div className="container">
       <nav className="navbar">
@@ -20,7 +62,7 @@ function AdminDashboard() {
             <i className="fa fa-search" aria-hidden="true"></i>
           </a>
           <a href="df">
-            <i className="fa fa-clock-o" aria-hidden="true"></i>
+            <i className="fa fa-clock-o" aria-hidden="true">{user?.result.name}</i>
           </a>
           <a href="rt">
             <img width="30" src={as} alt="" />
@@ -42,20 +84,22 @@ function AdminDashboard() {
           <div className="main__cards">
             <div className="card">
               <i
-                className="fa fa-pencil-square-o fa-2x text-lightblue"
+                className="fa fa-clock fa-2x text-lightblue"
                 aria-hidden="true"
               ></i>
+              <br></br>
               <div className="card_inner">
-                <p class="text-primary-p">Orders Pending</p>
-                <span Name="font-bold text-title">578</span>
+                <p class="text-primary-p">Deal Proposal Pending</p>
+                <span Name="font-bold text-title">{!notifications.length?"0":notifications.length}</span>
               </div>
             </div>
 
             <div className="card">
               <i className="fa fa-check fa-2x text-green" aria-hidden="true"></i>
+              <br></br>
               <div className="card_inner">
                 <p className="text-primary-p">Orders Accepted</p>
-                <span className="font-bold text-title">2467</span>
+                <span className="font-bold text-title"><Analytics  accepted="accepted"/></span>
               </div>
             </div>
 
@@ -64,9 +108,11 @@ function AdminDashboard() {
                 className="fa fa-ban fa-2x text-red"
                 aria-hidden="true"
               ></i>
+              <br></br>
               <div className="card_inner">
+                <br></br>
                 <p className="text-primary-p">Orders Rejected</p>
-                <span className="font-bold text-title">340</span>
+                <span className="font-bold text-title"><Analytics  rejected="rejected"/></span>
               </div>
             </div>
 
@@ -75,9 +121,10 @@ function AdminDashboard() {
                 className="fa fa-shopping-bag fa-2x text-green"
                 aria-hidden="true"
               ></i>
+              <br></br>
               <div className="card_inner">
                 <p className="text-primary-p">Number of Products</p>
-                <span className="font-bold text-title">645</span>
+                <span className="font-bold text-title"><Analytics  number="number"/></span>
               </div>
             </div>
           </div>
@@ -151,11 +198,11 @@ function AdminDashboard() {
           </div>
           <div className="sidebar__link">
             <i className="fa fa-user-secret" aria-hidden="true"></i>
-            <a href="df">Proposal Request</a>
+            <a href="Deals">Proposal Request</a>
           </div>
           <div className="sidebar__link">
-            <i className="fa fa-handshake-o"></i>
-            <a href="fg">Partners</a>
+            <i className="fa fa-handshake"></i>
+            <a href="Partners">Partners</a>
           </div>
           <div className="sidebar__link">
             <i className="fa fa-truck"></i>
@@ -165,7 +212,7 @@ function AdminDashboard() {
           <br/><br/><br/>
           <div className="sidebar__logout">
             <i className="fa fa-power-off"></i>
-            <a href="kl">Log out</a>
+            <a href="" onClick={()=>logout()}>Log out</a>
           </div>
         </div>
       </div>

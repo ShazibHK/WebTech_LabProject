@@ -14,6 +14,10 @@ const postSchema = mongoose.Schema({
         type: Date,
         default: new Date(),
     },
+    gstnum: String,
+    dealAccept: { type: String, default: "" },
+    seen: { type: String, default: "0" },
+    uid: String,
 })
 
 var CreateDeal = mongoose.model('CreateDeal', postSchema);

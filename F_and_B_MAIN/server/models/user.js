@@ -5,6 +5,9 @@ const userSchema = mongoose.Schema({
   email: { type: String, required: true },
   password: { type: String, required: true },
   id: { type: String },
+  dealAccept: { type: String, default: "" },
 });
 
-export default mongoose.model("User", userSchema);
+var User = mongoose.model("User", userSchema);
+
+export default User;

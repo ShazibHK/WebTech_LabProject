@@ -50,7 +50,6 @@ export const updatePost = async (req, res) => {
     const updatedPost = { creator, title, message, tags, selectedFile, _id: id };
 
     await PostMessage.findByIdAndUpdate(id, updatedPost, { new: true });
-
     res.json(updatedPost);
 }
 
@@ -70,7 +69,6 @@ export const likePost = async (req, res) => {
     if (!req.userId) {
         return res.json({ message: "Unauthenticated" });
       }
-
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
     
     const post = await PostMessage.findById(id);
