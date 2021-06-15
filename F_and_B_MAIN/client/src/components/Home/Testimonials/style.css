@@ -276,7 +276,7 @@ body,html{
 
 }
 
-.testimonials .container .contentBx{
+.testimonials .container .contentBxx{
     background: #fff;
     padding: 60px 50px;
     width: 550px;
@@ -284,13 +284,14 @@ body,html{
     justify-content: center;
     align-items: center;
     text-align: left;
+    
 }
 
-.testimonials .container .contentBx p{
+.testimonials .container .contentBxx p{
     font-style: italic;
 }
 
-.testimonials .container .contentBx h3{
+.testimonials .container .contentBxx h3{
     width: 100%;
     text-align: end;
     font-weight: 500;

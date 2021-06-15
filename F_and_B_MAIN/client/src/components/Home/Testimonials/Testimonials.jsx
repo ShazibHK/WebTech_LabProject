@@ -7,12 +7,12 @@ function Testimonials(){
         <section className="testimonials">
             <h2 className="heading">What Our Clients say</h2>
             <div className="container">
-                <div className="contentBx">
+                <div className="contentBxx">
                     <div>
                         <p>
                             Good Company
                         </p><br/>
-                        <h3>Jarret Fernandes</h3>
+                        <h3>Jhony Fernandes</h3>
                     </div>
                 </div>
                 <div className="contentBx">

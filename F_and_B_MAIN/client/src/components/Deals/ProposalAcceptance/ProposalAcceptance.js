@@ -12,7 +12,7 @@ const ProposalAcceptance=(props)=>{
   const user = JSON.parse(localStorage.getItem('profile'));
   
   console.log(user?.result?._id);
-  console.log(props.location.aboutprops.deal);
+  
   
   useEffect(() => {
     dispatch(updateNotification(user.result._id));
@@ -46,7 +46,7 @@ const ProposalAcceptance=(props)=>{
                   <p>{props.location.aboutprops.deal.contactnumber}</p>
               </div>
               <div className="dataP">
-                   <h4>Adress</h4>
+                   <h4>Address</h4>
                   <p>{props.location.aboutprops.deal.addess},{props.location.aboutprops.deal.zipcode},{props.location.aboutprops.deal.state}</p>
               </div>
             </div>
@@ -68,14 +68,15 @@ const ProposalAcceptance=(props)=>{
        <Button 
         variant="contained"
         color="Secondary" 
+        className="bnt"
         onClick={() =>{
-       
+        
       dispatch(updateDeal(props.location.aboutprops.deal._id));
        }}>
         Accept
       </Button>
        
-      <Button variant="contained" color="primary"  onClick={() => dispatch(deleteDeal(props.location.aboutprops.deal._id))} >Decline</Button>
+      <Button variant="contained" className="bnt" color="primary"  onClick={() => dispatch(deleteDeal(props.location.aboutprops.deal._id))} >Decline</Button>
        </div>
 
 
