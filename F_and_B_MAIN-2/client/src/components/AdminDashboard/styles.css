@@ -23,12 +23,11 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  
 }
 
-body {
-  box-sizing: border-box;
-  font-family: "Lato", sans-serif;
-}
+
 
 .text-primary-p {
   color: #a5aaad;
@@ -60,7 +59,7 @@ body {
   color: #3b9668;
 }
 
-.container {
+.contaa {
   display: grid;
   width: 100%;
   height: 100vh;
@@ -414,7 +413,7 @@ main {
 }
 
 @media only screen and (max-width: 978px) {
-  .container {
+  .contaa {
     grid-template-columns: 1fr;
     /* grid-template-rows: 0.2fr 2.2fr; */
     grid-template-rows: 0.2fr 3fr;

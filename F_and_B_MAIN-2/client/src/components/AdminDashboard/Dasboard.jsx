@@ -39,7 +39,7 @@ function AdminDashboard() {
     setUser(null);
   };
   return (
-    <div className="container">
+    <div className="contaa">
       <nav className="navbar">
         <div className="nav_icon">
           <i className="fa fa-bars" aria-hidden="true"></i>

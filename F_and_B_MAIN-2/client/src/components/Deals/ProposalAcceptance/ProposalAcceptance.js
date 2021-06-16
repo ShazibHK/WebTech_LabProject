@@ -68,6 +68,7 @@ const ProposalAcceptance=(props)=>{
        <Button 
         variant="contained"
         color="Secondary" 
+        className="bnt"
         onClick={() =>{
        
       dispatch(updateDeal(props.location.aboutprops.deal.uid));
@@ -75,7 +76,7 @@ const ProposalAcceptance=(props)=>{
         Accept
       </Button>
        
-      <Button variant="contained" color="primary"  onClick={() => dispatch(deleteDeal(props.location.aboutprops.deal.uid))} >Decline</Button>
+      <Button variant="contained" className="bnt" color="primary"  onClick={() => dispatch(deleteDeal(props.location.aboutprops.deal.uid))} >Decline</Button>
        </div>
 
 
